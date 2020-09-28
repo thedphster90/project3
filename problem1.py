@@ -1,20 +1,41 @@
+import math
+
 
 
 def sqrt(number):
 
 
+    #You can use recursion to find the square root.
+    #first start with boundary conditions
+    if number == 1:
+        return 1
+    elif number <= 0:
+        return print("please only use positive numbers ;)")
+
+    else:
+        prev_num = number/2
+
+        while True:
+
+            new_num = (prev_num + number/prev_num)/2
+
+            if abs((new_num * new_num) - number) < .00001: #this is the error that is accepted
+                return prev_num
+
+            prev_num = new_num  #this will be the new test number for the next loop
 
 
+print(sqrt(16))
 
-    """
+
+"""
     Calculate the floored square root of a number
     
     Args:
        number(int): Number to find the floored squared root
     Returns:
        int: Floored Square Root
-    """
-    pass
+"""
 
 print ("Pass" if  (3 == sqrt(9)) else "Fail")
 print ("Pass" if  (0 == sqrt(0)) else "Fail")
