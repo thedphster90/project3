@@ -1,24 +1,31 @@
 
-
+#Since an efficiency of log(n) is needed, I see no reason why a regular binary search cannot be used
+#to solve this problem.
 
 def rotated_array_search(input_list, number):
+#Create two indexes and start in the middle.  Move outwars
 
     mid_index = (len(input_list)-1)//2
-    left_index = mid_index
-    right_index = mid_index
 
-    while left_index >= 0 or right_index <= (len(input_list)-1):
+    if input_list[mid_index] == number:
+        return mid_index
 
-        if input_list[left_index] == number:
-            return left_index
-        elif input_list[right_index] == number:
-            return right_index
+    elif input_list[mid_index] > number:
+        newlist = input_list[:mid_index-1]
+        if newlist is None:
+            return -1
+        print(newlist)
+        return rotated_array_search(newlist, number)
 
-        else:
-            left_index-=1
-            right_index+=1
+    else:
+        newlist = input_list[mid_index+1:]
+        if newlist is None:
+            return -1
+        print(newlist)
+        return rotated_array_search(newlist, number)
 
-    return -1
+
+
 
 
     """
