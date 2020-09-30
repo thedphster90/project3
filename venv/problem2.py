@@ -3,9 +3,22 @@
 
 def rotated_array_search(input_list, number):
 
+    mid_index = (len(input_list)-1)//2
+    left_index = mid_index
+    right_index = mid_index
 
+    while left_index >= 0 or right_index <= (len(input_list)-1):
 
+        if input_list[left_index] == number:
+            return left_index
+        elif input_list[right_index] == number:
+            return right_index
 
+        else:
+            left_index-=1
+            right_index+=1
+
+    return -1
 
 
     """
@@ -16,7 +29,7 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
-   pass
+    pass
 
 def linear_search(input_list, number):
     for index, element in enumerate(input_list):
