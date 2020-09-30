@@ -5,24 +5,25 @@
 def rotated_array_search(input_list, number):
 #Create two indexes and start in the middle.  Move outwars
 
+
+
+    left_index = 0
     mid_index = (len(input_list)-1)//2
+    right_index = len(input_list)-1
+
+
 
     if input_list[mid_index] == number:
-        return mid_index
+        try:
+            return mid_index
+        except IndexError:
+            print("indexerror")
 
-    elif input_list[mid_index] > number:
-        newlist = input_list[:mid_index-1]
-        if newlist is None:
-            return -1
-        print(newlist)
-        return rotated_array_search(newlist, number)
+    elif input_list[left_index] > number:
+        return recursive_binary_search(input_list, number, mid_index+1, right_index)
 
     else:
-        newlist = input_list[mid_index+1:]
-        if newlist is None:
-            return -1
-        print(newlist)
-        return rotated_array_search(newlist, number)
+         return recursive_binary_search(input_list, number, left_index, mid_index-1)
 
 
 
@@ -38,6 +39,31 @@ def rotated_array_search(input_list, number):
     """
     pass
 
+def recursive_binary_search(input_list, number, left_index, right_index):
+
+    if left_index > right_index:
+        return -1
+
+
+    mid_index = (right_index + left_index) // 2
+    mid_ele = input_list[mid_index]
+
+    if mid_ele == number:
+        try:
+            return mid_index
+        except IndexError:
+            print("indexerror")
+
+    elif mid_ele > number:
+
+        return recursive_binary_search(input_list, number, left_index, mid_index-1)
+
+    else:
+        return recursive_binary_search(input_list, number, mid_index+1, right_index)
+
+
+    pass
+
 def linear_search(input_list, number):
     for index, element in enumerate(input_list):
         if element == number:
@@ -51,6 +77,7 @@ def test_function(test_case):
         print("Pass")
     else:
         print("Fail")
+
 
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
