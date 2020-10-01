@@ -4,8 +4,8 @@ import math
 
 def sqrt(number):
 
-
-    #You can use recursion to find the square root.
+    itnum = 0
+    #This can be solved with a loop that gets a
     #first start with boundary conditions
     if number == 1:
         return 1
@@ -19,15 +19,15 @@ def sqrt(number):
 
             new_num = (prev_num + number/prev_num)/2
 
-            if abs((new_num * new_num) - number) < .00001: #this is the error that is accepted
-                return prev_num
-
+            if abs(new_num - prev_num) < .00001: #this is the error that is accepted
+                return int(prev_num), itnum
+            itnum+=1
             prev_num = new_num  #this will be the new test number for the next loop
 
 
-print(sqrt(16))
+print(sqrt(100))
 
-
+print(sqrt(6))
 """
     Calculate the floored square root of a number
     
@@ -35,10 +35,10 @@ print(sqrt(16))
        number(int): Number to find the floored squared root
     Returns:
        int: Floored Square Root
-"""
+
 
 print ("Pass" if  (3 == sqrt(9)) else "Fail")
 print ("Pass" if  (0 == sqrt(0)) else "Fail")
 print ("Pass" if  (4 == sqrt(16)) else "Fail")
 print ("Pass" if  (1 == sqrt(1)) else "Fail")
-print ("Pass" if  (5 == sqrt(27)) else "Fail")
+print ("Pass" if  (5 == sqrt(27)) else "Fail")"""
