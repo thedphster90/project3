@@ -1,5 +1,5 @@
 import random
-
+#problem seems really easy.  Confirmed by looking at the mentor questions.
 def get_min_max(ints):
 
     min = ints[0]
@@ -35,5 +35,14 @@ def get_min_max(ints):
 
 l = [i for i in range(0, 10)]  # a list containing 0 - 9
 random.shuffle(l)
-print(get_min_max(l))
+
+
+p = [i for i in range(0, 24)]
+random.shuffle(p)
+
+r =[33,45,6,5,3,333,4]
+
+
 print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail")
+print ("Pass" if ((0, 23) == get_min_max(p)) else "Fail")
+print ("Pass" if ((3, 333) == get_min_max(r)) else "Fail")
