@@ -3,7 +3,7 @@
 #to solve this problem.
 
 def rotated_array_search(input_list, number):
-#Create two indexes and start in the middle.  Move outwars
+#Create two indexes and start in the middle.  Move outwards
 
 
 
@@ -83,4 +83,7 @@ test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
+#edge case in which the number is not a part of the array- should cause a pass
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+#edge case where the array is not correct- both functions should return -1, which should cause a pass.
+test_function([[0,0,0,0], 5])
