@@ -7,16 +7,26 @@ class RouteTrie:
 
     def insert(self, pathlist, handler_input):
 
+        current_node = self.root
+        for i in pathlist:
+            if not i in pathlist:
+                current_node.children[i] = RouteTrieNode()
+                current_node = current_node.children[i]
+            else:
+                current_node = current_node.children[i]
+                current_node.handler = handler_input
 
 
 
         # Similar to our previous example you will want to recursively add nodes
         # Make sure you assign the handler to only the leaf (deepest) node of this path
 
-    def find(self, ):
+    def find(self, pathlist):
 
         current_node = self.root
-        for letter in handler:
+        for letter in pathlist:
+
+            if letter not in pathlist:
             current_node = current_node.children[letter]
         return current_node
 
