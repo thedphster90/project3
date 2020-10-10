@@ -16,8 +16,11 @@ class RouteTrie:
                 current_node.children[i] = RouteTrieNode()
                 current_node = current_node.children[i]
             else:
-                current_node = current_node.children[i]
+                #current_node = current_node.children[i]
                 current_node.handler = handler_input
+
+
+        return current_node
 
 
 
@@ -29,9 +32,12 @@ class RouteTrie:
         current_node = self.root
         for letter in pathlist:
 
-            if letter not in pathlist:
+            if letter not in current_node.children:
+                return None
+            else:
                 current_node = current_node.children[letter]
-        return current_node
+
+        return current_node.handler
 
         # Starting at the root, navigate the Trie to find a match for this path
         # Return the handler for a match, or None for no match
@@ -50,22 +56,19 @@ class RouteTrieNode:
 
 
 class Router:
-    def __init__(self, handler_init = ''):
+    def __init__(self, handler_init):
 
         self.router = RouteTrie()
         self.router.root.handler = handler_init
-        self.handlerroot = self.router.root.handler
 
     def add_handler(self, path, handler):
 
-        handlerlist = []
+        pathlist = []
 
-        handlerlist += self.split_path(path)
-        node1 = self.router.insert(handlerlist, handler)
+        pathlist += self.split_path(path)
+        node1 = self.router.insert(pathlist, handler)
 
-        print(handlerlist)
-
-
+        return node1
 
         # Add a handler for a path
         # You will need to split the path and pass the pass parts
@@ -78,11 +81,12 @@ class Router:
         list1 = self.split_path(path)
         print(list1)
         m = self.router.find(list1)
-       # if self.router.root.handler == None:
-            #return None
 
-        if not m:
-            return print("handler not found")
+        if self.router.root.handler == None:
+            return None
+
+        elif m == None:
+            return print("not found handler")
         else:
             return print(m)
 
@@ -100,10 +104,21 @@ class Router:
 
 
 
-newrouter = Router()
-newrouter.add_handler("www.hello.com/the/train/came/to/the/station")
-print(newrouter.lookup('the'))
+#newrouter = Router()
+#newrouter.add_handler("www.hahaha.com/the/bababab", "hi")
+#print(newrouter.lookup('www.hahaha.com/the/bababab'))
 
-newrouter1 = Router()
+
+# create the router and add a route
+router = Router("root handler") # remove the 'not found handler' if you did not implement this
+router.add_handler("/home/about", "about handler")  # add a route
+
+# some lookups with the expected output
+print(router.lookup("/")) # should print 'root handler'
+print(router.lookup("/home")) # should print 'not found handler' or None if you did not implement one
+print(router.lookup("/home/about")) # should print 'about handler'
+print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
+print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
+"""newrouter1 = Router()
 print(newrouter1.lookup('the'))
-newrouter1.lookup('hi')
+newrouter1.lookup('hi')"""
