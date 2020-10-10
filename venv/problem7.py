@@ -12,7 +12,7 @@ class RouteTrie:
 
         current_node = self.root
         for i in pathlist:
-            if not i in pathlist:
+            if i not in current_node.children:
                 current_node.children[i] = RouteTrieNode()
                 current_node = current_node.children[i]
             else:
@@ -67,6 +67,7 @@ class Router:
 
         pathlist += self.split_path(path)
         node1 = self.router.insert(pathlist, handler)
+        node1.handler = handler
 
         return node1
 
@@ -79,16 +80,13 @@ class Router:
 
         #m = self.router.find(path)
         list1 = self.split_path(path)
-        print(list1)
+        #print(list1)
         m = self.router.find(list1)
-
-        if self.router.root.handler == None:
-            return None
-
-        elif m == None:
-            return print("not found handler")
+        current_node = self.router
+        if current_node.find(list1):
+            return current_node.find(list1)
         else:
-            return print(m)
+            return None
 
 
 
@@ -100,6 +98,10 @@ class Router:
         pass
 
     def split_path(self, path):
+        #path1 = path.split("/")
+        #print(path1)
+
+
         return [y for y in path.split("/") if y]
 
 
@@ -119,6 +121,4 @@ print(router.lookup("/home")) # should print 'not found handler' or None if you 
 print(router.lookup("/home/about")) # should print 'about handler'
 print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
 print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
-"""newrouter1 = Router()
-print(newrouter1.lookup('the'))
-newrouter1.lookup('hi')"""
+
