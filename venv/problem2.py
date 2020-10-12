@@ -5,13 +5,9 @@
 def rotated_array_search(input_list, number):
 #Create two indexes and start in the middle.  Move outwards
 
-
-
     left_index = 0
     mid_index = (len(input_list)-1)//2
     right_index = len(input_list)-1
-
-
 
     if input_list[mid_index] == number:
         try:
@@ -24,9 +20,6 @@ def rotated_array_search(input_list, number):
 
     else:
          return recursive_binary_search(input_list, number, left_index, mid_index-1)
-
-
-
 
 
     """
@@ -60,8 +53,7 @@ def recursive_binary_search(input_list, number, left_index, right_index):
 
     else:
         return recursive_binary_search(input_list, number, mid_index+1, right_index)
-
-
+#The idea is to use a recursive binary search on the two different split up lists, since they will be ordered.
     pass
 
 def linear_search(input_list, number):

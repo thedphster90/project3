@@ -62,8 +62,6 @@ def num_maker(list1, list2):
 
     pass
 
-
-
 def test_function(test_case):
     output = rearrange_digits(test_case[0])
     solution = test_case[1]
@@ -79,3 +77,7 @@ test_function(test_case2)
 #edge case
 test_case3 = [[0,0,0,1], [10, 0]]
 test_function(test_case3)
+#edge case
+#not going to make an edge case with double digit numbers because 1 assumption is single digit numbers
+test_case4 = [[3,4,5,6], [64, 53]]
+test_function(test_case4)

@@ -1,5 +1,3 @@
-import math
-
 
 
 def sqrt(number):
@@ -26,9 +24,6 @@ def sqrt(number):
             prev_num = new_num  #this will be the new test number for the next loop
 
 
-print(sqrt(100))
-
-print(sqrt(6))
 """
     Calculate the floored square root of a number
     

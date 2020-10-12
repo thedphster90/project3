@@ -78,10 +78,8 @@ class Router:
 
     def lookup(self, path):
 
-        #m = self.router.find(path)
         list1 = self.split_path(path)
-        #print(list1)
-        m = self.router.find(list1)
+
         current_node = self.router
         if current_node.find(list1):
             return current_node.find(list1)
