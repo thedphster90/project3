@@ -1,6 +1,4 @@
-
 import os
-
 
 # A RouteTrie will store our routes and their associated handlers
 class RouteTrie:
@@ -11,15 +9,16 @@ class RouteTrie:
     def insert(self, pathlist, handler_input):
 
         current_node = self.root
-        for i in pathlist:
-            if i not in current_node.children:
-                current_node.children[i] = RouteTrieNode()
-                current_node = current_node.children[i]
+        for i in range(0, len(pathlist)):
+            if pathlist[i] not in current_node.children:
+
+                current_node.children[pathlist[i]] = RouteTrieNode()
+                current_node = current_node.children[pathlist[i]]
             else:
-                #current_node = current_node.children[i]
-                current_node.handler = handler_input
+                current_node = current_node.children[pathlist[i]]
+                pass#current_node = current_node.children[i]
 
-
+        current_node.handler = handler_input
         return current_node
 
 
@@ -35,6 +34,7 @@ class RouteTrie:
             if letter not in current_node.children:
                 return None
             else:
+                #print(current_node.handler)
                 current_node = current_node.children[letter]
 
         return current_node.handler
@@ -69,7 +69,7 @@ class Router:
         node1 = self.router.insert(pathlist, handler)
         node1.handler = handler
 
-        return node1
+        return #node1
 
         # Add a handler for a path
         # You will need to split the path and pass the pass parts
@@ -81,8 +81,14 @@ class Router:
         list1 = self.split_path(path)
 
         current_node = self.router
-        if current_node.find(list1):
-            return current_node.find(list1)
+
+        #if current_node.find(list1):
+        """for node in current_node:
+            if node.handler is not None and node.children is None:
+                return node.handler"""
+        handler = current_node.find(list1)
+        if isinstance(handler, str):
+            return handler
         else:
             return None
 
@@ -120,3 +126,7 @@ print(router.lookup("/home/about")) # should print 'about handler'
 print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
 print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
 
+router.add_handler("/home/faculty/UdacityReviewerGuy", "IsTooMeticulous")
+print(router.lookup("/home/faculty/UdacityReviewerGuy"))
+router.add_handler("/home/about/another/", "anotherhandler")
+print(router.lookup("/home/about/another/"))
