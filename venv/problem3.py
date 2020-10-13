@@ -1,10 +1,48 @@
 
 
+#Used the Udacity lesson's "mergesort" function for this, which should be nlog(n) time complexity.
+def mergesort(items):
+    if len(items) <= 1:
+        return items
+
+    mid = len(items) // 2
+    left = items[:mid]
+    right = items[mid:]
+
+    left = mergesort(left)
+    right = mergesort(right)
+
+    return merge(left, right)
+
+
+def merge(left, right):
+    merged = []
+    left_index = 0
+    right_index = 0
+
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] > right[right_index]:
+            merged.append(right[right_index])
+            right_index += 1
+        else:
+            merged.append(left[left_index])
+            left_index += 1
+
+    merged += left[left_index:]
+    merged += right[right_index:]
+
+    return merged
+
+list1test = [3,44,5,1,9,100]
+print(mergesort(list1test))
+
+
+
 def rearrange_digits(input_list):
     sum_list1 = []
     sum_list2 = []
-    #python sort function has a worst case time complexity of nlog(n), fulfilling the requirements of the problem.
-    input_list.sort()
+    #python can use a mergesort function has a worst case time complexity of nlog(n), fulfilling the requirements of the problem.
+    input_list = mergesort(input_list)
     #input list length is odd
     if len(input_list)%2 == 1:
         odd = 0
