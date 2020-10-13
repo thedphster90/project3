@@ -78,6 +78,6 @@ test_function(test_case2)
 test_case3 = [[0,0,0,1], [10, 0]]
 test_function(test_case3)
 #edge case
-#not going to make an edge case with double digit numbers because 1 assumption is single digit numbers
-test_case4 = [[3,4,5,6], [64, 53]]
+#edge case that handles a single array input, works ok
+test_case4 = [[0], [64, 53]]
 test_function(test_case4)

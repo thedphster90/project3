@@ -1,6 +1,6 @@
 
 
-#Note:  THis problem is identical to one of the lessons in the program, lesson2, num. 15.  I use
+#Note:  This problem is identical to one of the lessons in the program, lesson2, num. 15.  I use
 #the same code that I wrote for that problem for this problem.  Please let me know if this is a problem.
 def sort_012(input_list):
 
@@ -18,6 +18,8 @@ def sort_012(input_list):
             input_list[main] = input_list[num_2]
             input_list[num_2] = 2
             num_2 -= 1
+        elif input_list[main] > 2:
+            return print("input list has value greater than 2!!!")
         else:
             main += 1
     return input_list
@@ -45,5 +47,8 @@ test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0,
 test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
 #edge case- this has improper numbers so it shouldn't work
 test_function([3,5,44,3])
+#fails due to being outside the allowed type of values
+test_function([0,3])
+
 
 
