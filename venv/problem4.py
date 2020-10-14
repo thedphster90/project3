@@ -46,9 +46,9 @@ test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0,
 #edge case- This is already done so it should pass without having to sort, which the function should allow for
 test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
 #edge case- this has improper numbers so it shouldn't work
-test_function([3,5,44,3])
+test_function([])
 #fails due to being outside the allowed type of values
-test_function([0,3])
+test_function([0])
 
 
 

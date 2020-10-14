@@ -33,10 +33,6 @@ def merge(left, right):
 
     return merged
 
-list1test = [3,44,5,1,9,100]
-print(mergesort(list1test))
-
-
 
 def rearrange_digits(input_list):
     sum_list1 = []
@@ -117,5 +113,5 @@ test_case3 = [[0,0,0,1], [10, 0]]
 test_function(test_case3)
 #edge case
 #edge case that handles a single array input, works ok
-test_case4 = [[0], [64, 53]]
+test_case4 = [[0], [0, 0]]
 test_function(test_case4)

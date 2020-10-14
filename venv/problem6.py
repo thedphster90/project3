@@ -36,19 +36,21 @@ def get_min_max(ints):
 ## Example Test Case of Ten Integers
 
 
-l = [i for i in range(0, 10)]  # a list containing 0 - 9
-random.shuffle(l)
+test_list1 = [i for i in range(0, 10)]  # a list containing 0 - 9
+random.shuffle(test_list1)
 
 
-p = [i for i in range(0, 24)]
-random.shuffle(p)
+test_list2 = [i for i in range(0, 24)]
+random.shuffle(test_list2)
 
-r =[33,45,6,5,3,333,4]
+test_list3 =[33,45,6,5,3,333,4]
 
-edge = [i for i in range (0, 0)]
+test_list4 = [i for i in range(0, 100001)]  # a list containing 0 - 100000
+random.shuffle(test_list4)
 
-print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail")
-print ("Pass" if ((0, 23) == get_min_max(p)) else "Fail")
-print ("Pass" if ((3, 333) == get_min_max(r)) else "Fail")
-print ("Pass" if ((0, 0) == get_min_max(edge)) else "Fail")
+print ("Pass" if ((0, 9) == get_min_max(test_list1)) else "Fail")
+print ("Pass" if ((0, 23) == get_min_max(test_list2)) else "Fail")
+print ("Pass" if ((3, 333) == get_min_max(test_list3)) else "Fail")
+
+print ("Pass" if ((0, 100000) == get_min_max(test_list4)) else "Fail")
 #edge case where length of array is zero

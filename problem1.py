@@ -7,6 +7,8 @@ def sqrt(number):
     #first start with boundary conditions
     if number == 1:
         return 1
+    elif number == 0:
+        return 0
     elif number <= 0:
         return print("please only use positive numbers ;)")
 
@@ -35,7 +37,7 @@ def sqrt(number):
 
 print ("Pass" if  (3 == sqrt(9)) else "Fail")
 print ("Pass" if  (0 == sqrt(0)) else "Fail")
-#This will fail because it will not return 0, but return a fail message
+#This is an edge case that should pass based on the zero condition included in the problem.
 print ("Pass" if  (4 == sqrt(16)) else "Fail")
 print ("Pass" if  (1 == sqrt(1)) else "Fail")
 print ("Pass" if  (5 == sqrt(27)) else "Fail")

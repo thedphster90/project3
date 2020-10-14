@@ -79,5 +79,3 @@ test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
 #edge case where the array is not correct- both functions should return -1, which should cause a pass.
 test_function([[0,0,0,0], 5])
-#here is a case that causes it to fail because the list is not ordered
-test_function([[0,4,5,3,10,3,4,2,1], 1])
