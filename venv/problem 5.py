@@ -21,9 +21,11 @@ class TrieNode:
         output_list = []
         new_suffix = suffix
         for key, value in path_dict.items():
+
             new_suffix += key
             if value.is_word:
                 output_list.append(new_suffix)
+                output_list += value.suffixes(new_suffix)
             else:
                 output_list += value.suffixes(new_suffix)
             new_suffix = suffix
@@ -66,7 +68,6 @@ wordList = [
 ]
 for word in wordList:
     MyTrie.insert(word)
-
 
 from ipywidgets import widgets
 from IPython.display import display
