@@ -81,4 +81,4 @@ test_function([[6, 7, 8, 1, 2, 3, 4], 10])
 test_function([[0,0,0,0], 5])
 test_function([[], 0])
 #edge case- empty bracket- I was told by Udacity reviewer not to worry about non-applicable edge cases
-#like lists that aren't sorted- that's why I didn't include those.
+#like lists that aren't sorted- that's why I didn't include those, just to clarify.
