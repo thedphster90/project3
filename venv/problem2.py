@@ -79,3 +79,6 @@ test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
 #edge case where the array is not correct- both functions should return -1, which should cause a pass.
 test_function([[0,0,0,0], 5])
+test_function([[], 0])
+#edge case- empty bracket- I was told by Udacity reviewer not to worry about non-applicable edge cases
+#like lists that aren't sorted- that's why I didn't include those.
